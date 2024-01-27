@@ -8,7 +8,7 @@ public class SpawnCounter : MonoBehaviour
     // public Text SpawnTimerText;
 
     float spawnTimer = 4f;
-    Text spawnTimerText = null;
+    // Text spawnTimerText = null;
 
     // Start is called before the first frame update
     void Start()

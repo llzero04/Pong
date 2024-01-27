@@ -539,7 +539,15 @@ MonoBehaviour:
     W and S => To move red
     bar
 
-    Up and Down Arrow => To move the blue bar'
+    Up and Down Arrow => To move the blue bar
+
+    For single player mode:
+
+    W
+    and S => To move red bar
+
+    This is a rally mode (Try to keep the ball in the
+    bounds)'
 --- !u!222 &1034859161
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1046,7 +1054,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1835483290}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1332513622}
+        m_TargetAssemblyTypeName: HomeManager, Assembly-CSharp
+        m_MethodName: loadLevelOnePlayer
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1835483290
 MonoBehaviour:
   m_ObjectHideFlags: 0

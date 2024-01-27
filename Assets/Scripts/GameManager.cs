@@ -20,7 +20,8 @@ public class GameManager : MonoBehaviour
 
     int maxScore = 5;
 
-    float respawnTimer = 0f;
+    int gameMode;
+    int rallyScore = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +30,22 @@ public class GameManager : MonoBehaviour
         Instantiate(ball, new Vector3(0, 0, 0), Quaternion.identity);
 
         FindObjectOfType<AudioManager>().playAudio("GameTheme");
+
+        gameMode = PlayerPrefs.GetInt("GameMode", 2);
+
+        // Single Player Mode
+        if(gameMode == 1)
+        {
+            rallyScore = 0;
+            GameObject.FindGameObjectWithTag("PlayerBlue").GetComponent<PlayerMovementBotScript>().enabled = true;
+            GameObject.FindGameObjectWithTag("PlayerBlue").GetComponent<PlayerMovementScript>().enabled = false;
+            scoreText.text = "Score : " + rallyScore.ToString();
+        }
+        else if(gameMode == 2)
+        {
+            GameObject.FindGameObjectWithTag("PlayerBlue").GetComponent<PlayerMovementBotScript>().enabled = false;
+            GameObject.FindGameObjectWithTag("PlayerBlue").GetComponent<PlayerMovementScript>().enabled = true;
+        }
     }
 
     // Update is called once per frame
@@ -73,8 +90,21 @@ public class GameManager : MonoBehaviour
         Instantiate(ball, new Vector3(0, 0, 0), Quaternion.identity);
     }
 
+    public void incrementRallyScore(int val)
+    {
+        rallyScore += val;
+        scoreText.text = "Score : " + rallyScore.ToString();
+    }
+
     public void gameOver()
     {
+        if(gameMode == 1)
+        {
+            matchResultText.text = "Rally Score : " + rallyScore.ToString();
+            gameOverPanel.SetActive(true);
+            return;
+        }
+
         if(playerRedScore == maxScore)
         {
             matchResultText.text = "Player Red Won the Game";

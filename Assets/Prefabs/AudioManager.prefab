@@ -70,7 +70,7 @@ MonoBehaviour:
     loop: 0
     audioSource: {fileID: 0}
   - audioName: EndTheme
-    audioClip: {fileID: 8300000, guid: 6204d5687fa0e4c4d907725bab8ec094, type: 3}
+    audioClip: {fileID: 8300000, guid: 00d663f073976284eadf8d912fa70e66, type: 3}
     volume: 0.2
     pitch: 1
     loop: 1

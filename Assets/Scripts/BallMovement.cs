@@ -18,6 +18,8 @@ public class BallMovement : MonoBehaviour
 
     Vector2 ballVelocityVector = Vector2.zero;
 
+    int gameMode = 2;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +27,8 @@ public class BallMovement : MonoBehaviour
         xDirection = -1;
         currentBallSpeed = ballSpeedInit;
         // yDirection = 0;
+
+        gameMode = PlayerPrefs.GetInt("GameMode", 2);
     }
 
     // Update is called once per frame
@@ -54,6 +58,11 @@ public class BallMovement : MonoBehaviour
     {
         if(collision.gameObject.tag.Equals("PlayerRed") == true || collision.gameObject.tag.Equals("PlayerBlue") == true)
         {
+            if(collision.gameObject.tag.Equals("PlayerRed") == true && gameMode == 1)
+            {
+                FindAnyObjectByType<PlayerMovementBotScript>().setOffset();
+                FindAnyObjectByType<GameManager>().incrementRallyScore(1);
+            }
             FindObjectOfType<AudioManager>().playAudio("BarHit");
             float playerY = collision.gameObject.transform.position.y;
             float ballY = transform.position.y;

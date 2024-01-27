@@ -19,12 +19,13 @@ public class HomeManager : MonoBehaviour
 
     public void loadLevelTwoPlayer()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         PlayerPrefs.SetInt("GameMode", 2);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     public void loadLevelOnePlayer()
     {
         PlayerPrefs.SetInt("GameMode", 1);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }
